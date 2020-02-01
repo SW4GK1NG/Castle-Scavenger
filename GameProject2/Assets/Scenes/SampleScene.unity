@@ -1287,6 +1287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   jumpForce: 12
+  dashSpeed: 16
   wallSlideSpeed: 3
   wallJumpLerp: 4
   timeJumped: 0
@@ -1334,7 +1335,7 @@ MonoBehaviour:
   onRightWall: 0
   onLeftWall: 0
   wallSide: 0
-  collisionRadius: 0.25
+  collisionRadius: 0.1
   bottomOffset: {x: 0, y: -0.57}
   rightOffset: {x: 0.55, y: 0}
   leftOffset: {x: -0.55, y: 0}

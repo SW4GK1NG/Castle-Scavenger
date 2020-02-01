@@ -12,6 +12,7 @@ public class PlayerControl : MonoBehaviour
     [Header("Player Value")]
     public float speed;
     public float jumpForce;
+    public float dashSpeed;
     public float wallSlideSpeed;
     public float wallJumpLerp;
     public int timeJumped = 0;
@@ -72,7 +73,7 @@ public class PlayerControl : MonoBehaviour
         {
             //anim.SetTrigger("jump");
 
-            if (coll.onGround) {
+            if (coll.onGround || timeJumped < maxJump) {
                 //Debug.Log("Jump");
                 Jump(Vector2.up, false);
             }
@@ -105,6 +106,11 @@ public class PlayerControl : MonoBehaviour
         if(!coll.onGround && groundTouch)
         {
             groundTouch = false;
+        }
+
+        if (Input.GetButtonDown("Dash") && !hasDashed)
+        {
+            Dash(side);
         }
         
         if(x > 0)
@@ -173,12 +179,11 @@ public class PlayerControl : MonoBehaviour
         }
 
         bool pushingWall = false;
-        if((rb.velocity.x > 0 && coll.onRightWall) || (rb.velocity.x < 0 && coll.onLeftWall))
-        {
+        if((rb.velocity.x > 0 && coll.onRightWall) || (rb.velocity.x < 0 && coll.onLeftWall)) {
             pushingWall = true;
         }
         float push = pushingWall ? 0 : rb.velocity.x;
-
+        wallJumped = true;
         rb.velocity = new Vector2(push, -wallSlideSpeed);
     }
 
@@ -193,20 +198,51 @@ public class PlayerControl : MonoBehaviour
         StopCoroutine(DisableMovement(0));
         StartCoroutine(DisableMovement(.1f));
 
-        Vector2 wallDir = coll.onRightWall ? Vector2.left : Vector2.right;
-
-        Jump((Vector2.up / 1.5f + wallDir / 1.5f), true);
-
         wallJumped = true;
+        Vector2 wallDir = coll.onRightWall ? Vector2.left : Vector2.right;
+        Jump((Vector2.up / 1.5f + wallDir / 1.5f), true);
+        
+    }
+
+    private void Dash(float side)
+    {
+        hasDashed = true;
+        rb.velocity = Vector2.zero;
+        Vector2 dir = new Vector2(side, 0);
+        rb.velocity += dir.normalized * dashSpeed;
+        StartCoroutine(DashWait());
+    }
+
+    IEnumerator DashWait()
+    {
+        StartCoroutine(GroundDash());
+        rb.gravityScale = 0;
+        GetComponent<Jump>().enabled = false;
+        wallJumped = true;
+        isDashing = true;
+
+        yield return new WaitForSeconds(.3f);
+
+        rb.gravityScale = 2.5f;
+        GetComponent<Jump>().enabled = true;
+        wallJumped = false;
+        isDashing = false;
+    }
+
+    IEnumerator GroundDash()
+    {
+        yield return new WaitForSeconds(.15f);
+        if (coll.onGround)
+            hasDashed = false;
     }
 
     IEnumerator DisableMovement(float time)
     {
         //Debug.Log("Delay");
         canMove = false;
-        Debug.Log("False");
+        //Debug.Log("False");
         yield return new WaitForSeconds(time);
-        Debug.Log("True");
+        //Debug.Log("True");
         canMove = true;
     }
     	
