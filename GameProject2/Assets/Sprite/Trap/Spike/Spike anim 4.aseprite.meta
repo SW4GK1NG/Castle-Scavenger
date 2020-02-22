@@ -1,0 +1,38 @@
+fileFormatVersion: 2
+guid: 8b0f7d8ade68f9244b88b18c9d0d4f88
+ScriptedImporter:
+  fileIDToRecycleName:
+    2800000: Texture
+    21300000: Spike anim 4_0
+    21300002: Spike anim 4_1
+    21300004: Spike anim 4_2
+    21300006: Spike anim 4_3
+    21300008: Spike anim 4_4
+    21300010: Spike anim 4_5
+    21300012: Spike anim 4_6
+    21300014: Spike anim 4_7
+    21300016: Spike anim 4_8
+    21300018: Spike anim 4_9
+    21300020: Spike anim 4_10
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 25a63327f814cd04cbdbd7e8ae6dfcf9, type: 3}
+  textureSettings:
+    textureType: 8
+    pixelsPerUnit: 32
+    transparentMask: 0
+    transparentColor: {r: 1, g: 0, b: 1, a: 1}
+    meshType: 1
+    extrudeEdges: 1
+    spritePivot: {x: 0.5, y: 0.5}
+    generatePhysics: 1
+    wrapMode: 1
+    filterMode: 0
+    tileSize: {x: 32, y: 32}
+    tilePadding: {x: 0, y: 0}
+    tileOffset: {x: 0, y: 0}
+  animationSettings: []
+  atlas: {instanceID: 0}
+  importType: 0

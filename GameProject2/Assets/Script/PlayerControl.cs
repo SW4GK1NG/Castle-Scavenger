@@ -55,7 +55,7 @@ public class PlayerControl : MonoBehaviour
         Vector2 dir = new Vector2(x, y);
 
         Walk(dir);
-        //anim.SetHorizontalMovement(x, y, rb.velocity.y);
+        anim.SetHorizontalMovement(x, y, rb.velocity.y);
         
         if (coll.onGround && !isDashing)
             {
@@ -116,12 +116,12 @@ public class PlayerControl : MonoBehaviour
         if(x > 0)
         {
             side = 1;
-            //anim.Flip(side);
+            anim.Flip(side);
         }
         if (x < 0)
         {
             side = -1;
-            //anim.Flip(side);
+            anim.Flip(side);
         }
     }
 
@@ -140,7 +140,7 @@ public class PlayerControl : MonoBehaviour
         hasDashed = false;
         isDashing = false;
 
-        //side = anim.sr.flipX ? -1 : 1;
+        side = anim.sr.flipX ? -1 : 1;
 
         //jumpParticle.Play();
     }
@@ -171,7 +171,7 @@ public class PlayerControl : MonoBehaviour
     private void WallSlide()
     {
         if(coll.wallSide != side) {
-            //anim.Flip(side * -1);
+            anim.Flip(side * -1);
         }
 
         if (!canMove) {
@@ -192,7 +192,7 @@ public class PlayerControl : MonoBehaviour
         if ((side == 1 && coll.onRightWall) || side == -1 && !coll.onRightWall)
         {
             side *= -1;
-            //anim.Flip(side);
+            anim.Flip(side);
         }
 
         StopCoroutine(DisableMovement(0));

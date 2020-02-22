@@ -12,7 +12,8 @@ public class SlammerAuto : MonoBehaviour
     [Header("Adjust")]
 
     public float downSpeed;
-    public float Delay;
+    public float DelayUp;
+    public float DelayDown;
 
     // Start is called before the first frame update
     void Start()
@@ -43,13 +44,13 @@ public class SlammerAuto : MonoBehaviour
     }
 
     IEnumerator CooldownUp() {
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(DelayDown);
         goBack();
         StopCoroutine(CooldownUp());
     }
 
     IEnumerator CooldownSmash() {
-        yield return new WaitForSecondsRealtime(Delay);
+        yield return new WaitForSecondsRealtime(DelayUp);
         LoopRepeat();
     }
 

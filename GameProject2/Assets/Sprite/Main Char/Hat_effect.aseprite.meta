@@ -1,0 +1,81 @@
+fileFormatVersion: 2
+guid: 98434d73b89d7bf4ea9d846ded5e7fbb
+ScriptedImporter:
+  fileIDToRecycleName:
+    2800000: Texture
+    7400000: Done
+    7400002: Tran
+    7400004: H
+    7400006: D
+    7400008: Jacket
+    21300000: Hat_effect_0
+    21300002: Hat_effect_1
+    21300004: Hat_effect_2
+    21300006: Hat_effect_3
+    21300008: Hat_effect_4
+    21300010: Hat_effect_5
+    21300012: Hat_effect_6
+    21300014: Hat_effect_7
+    21300016: Hat_effect_8
+    21300018: Hat_effect_9
+    21300020: Hat_effect_10
+    21300022: Hat_effect_11
+    21300024: Hat_effect_12
+    21300026: Hat_effect_13
+    21300028: Hat_effect_14
+    21300030: Hat_effect_15
+    21300032: Hat_effect_16
+    21300034: Hat_effect_17
+    21300036: Hat_effect_18
+    21300038: Hat_effect_19
+    21300040: Hat_effect_20
+    21300042: Hat_effect_21
+    21300044: Hat_effect_22
+    21300046: Hat_effect_23
+    21300048: Hat_effect_24
+    21300050: Hat_effect_25
+    21300052: Hat_effect_26
+    21300054: Hat_effect_27
+    21300056: Hat_effect_28
+    21300058: Hat_effect_29
+    21300060: Hat_effect_30
+    21300062: Hat_effect_31
+    21300064: Hat_effect_32
+    21300066: Hat_effect_33
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 25a63327f814cd04cbdbd7e8ae6dfcf9, type: 3}
+  textureSettings:
+    textureType: 8
+    pixelsPerUnit: 32
+    transparentMask: 0
+    transparentColor: {r: 1, g: 0, b: 1, a: 1}
+    meshType: 1
+    extrudeEdges: 1
+    spritePivot: {x: 0.5, y: 0.5}
+    generatePhysics: 1
+    wrapMode: 1
+    filterMode: 0
+    tileSize: {x: 32, y: 32}
+    tilePadding: {x: 0, y: 0}
+    tileOffset: {x: 0, y: 0}
+  animationSettings:
+  - animationName: Done
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 0; To: 25"
+  - animationName: Tran
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 9; To: 9"
+  - animationName: H
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 21; To: 21"
+  - animationName: D
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 25; To: 25"
+  - animationName: Jacket
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 26; To: 33"
+  atlas: {instanceID: 0}
+  importType: 0
