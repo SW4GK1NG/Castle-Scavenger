@@ -71,7 +71,7 @@ public class PlayerControl : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            //anim.SetTrigger("jump");
+            anim.SetTrigger("jump");
 
             if (coll.onGround || timeJumped < maxJump) {
                 //Debug.Log("Jump");
@@ -207,6 +207,7 @@ public class PlayerControl : MonoBehaviour
     private void Dash(float side)
     {
         hasDashed = true;
+        anim.SetTrigger("dash");
         rb.velocity = Vector2.zero;
         Vector2 dir = new Vector2(side, 0);
         rb.velocity += dir.normalized * dashSpeed;
@@ -231,7 +232,7 @@ public class PlayerControl : MonoBehaviour
 
     IEnumerator GroundDash()
     {
-        yield return new WaitForSeconds(.15f);
+        yield return new WaitForSeconds(.25f);
         if (coll.onGround)
             hasDashed = false;
     }
