@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AnimScript : MonoBehaviour
 {
-    private Animator anim;
-    private PlayerControl move;
-    private CollisionCheck coll;
+    Animator anim;
+    PlayerControl move;
+    CollisionCheck coll;
     public SpriteRenderer sr;
 
     void Start()

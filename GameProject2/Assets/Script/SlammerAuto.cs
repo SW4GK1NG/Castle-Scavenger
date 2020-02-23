@@ -27,9 +27,7 @@ public class SlammerAuto : MonoBehaviour
     void Update()
     {
         if (goingUp) {
-            Debug.Log("Going Up");
             if (transform.position.y >= startPos.y) {
-                Debug.Log("Same Pos");
                 rb.velocity = Vector2.zero;
                 goingUp = false;
                 StartCoroutine(CooldownSmash());

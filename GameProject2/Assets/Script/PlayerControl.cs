@@ -34,8 +34,8 @@ public class PlayerControl : MonoBehaviour
 
     [Space]
 
-    private bool groundTouch;
-    private bool hasDashed;
+    bool groundTouch;
+    bool hasDashed;
 
 
     // Start is called before the first frame update
@@ -129,6 +129,16 @@ public class PlayerControl : MonoBehaviour
         if (other.gameObject.tag == "Ground" || other.gameObject.tag == "Wall") {
             timeJumped = 0;
         }
+
+        if (other.gameObject.tag == "Trap") {
+            Debug.Log("Ded");
+        }
+    }
+
+    void OnTriggerEnter2D (Collider2D other) {
+        if (other.gameObject.tag == "Trap") {
+            Debug.Log("Ded");
+        }
     }
 
     void OnCollisionExit2D (Collision2D other) {
@@ -145,7 +155,7 @@ public class PlayerControl : MonoBehaviour
         //jumpParticle.Play();
     }
 
-    private void Walk(Vector2 dir)
+    void Walk(Vector2 dir)
     {
 
         if (!canMove) {
@@ -168,7 +178,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void WallSlide()
+    void WallSlide()
     {
         if(coll.wallSide != side) {
             anim.Flip(side * -1);
@@ -187,7 +197,7 @@ public class PlayerControl : MonoBehaviour
         rb.velocity = new Vector2(push, -wallSlideSpeed);
     }
 
-    private void WallJump()
+    void WallJump()
     {
         if ((side == 1 && coll.onRightWall) || side == -1 && !coll.onRightWall)
         {
@@ -204,7 +214,7 @@ public class PlayerControl : MonoBehaviour
         
     }
 
-    private void Dash(float side)
+    void Dash(float side)
     {
         hasDashed = true;
         anim.SetTrigger("dash");

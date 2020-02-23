@@ -5,10 +5,10 @@ using DG.Tweening;
 
 public class DashTrail : MonoBehaviour
 {
-    private PlayerControl move;
-    private AnimScript anim;
-    private SpriteRenderer sr;
-    public Transform ghostsParent;
+    PlayerControl move;
+    AnimScript anim;
+    SpriteRenderer sr;
+    Transform ghostsParent;
     public Color trailColor;
     public Color fadeColor;
     public float ghostInterval;
