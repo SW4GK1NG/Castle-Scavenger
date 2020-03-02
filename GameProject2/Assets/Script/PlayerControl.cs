@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class PlayerControl : MonoBehaviour
@@ -29,6 +30,7 @@ public class PlayerControl : MonoBehaviour
     public bool canMove = true;
     public bool touchWall;
     public bool onWall;
+    public bool onWallPlayed;
     public bool isDashing;
     public bool wallJumped;
 
@@ -56,15 +58,17 @@ public class PlayerControl : MonoBehaviour
 
         Walk(dir);
         anim.SetHorizontalMovement(x, y, rb.velocity.y);
-        
-        if (coll.onGround && !isDashing)
-            {
-                wallJumped = false;
-                GetComponent<Jump>().enabled = true;
-            }
 
-        if (onWall) {
-            if (rb.velocity.y < -wallSlideSpeed) {
+        if (coll.onGround && !isDashing)
+        {
+            wallJumped = false;
+            GetComponent<Jump>().enabled = true;
+        }
+
+        if (onWall)
+        {
+            if (rb.velocity.y < -wallSlideSpeed)
+            {
                 rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
             }
         }
@@ -73,18 +77,20 @@ public class PlayerControl : MonoBehaviour
         {
             anim.SetTrigger("jump");
 
-            if (coll.onGround || timeJumped < maxJump) {
+            if (coll.onGround || timeJumped < maxJump)
+            {
                 //Debug.Log("Jump");
                 Jump(Vector2.up, false);
             }
-            if (coll.onWall && !coll.onGround) {
+            if (coll.onWall && !coll.onGround)
+            {
                 //Debug.Log("Wall Jump");
                 WallJump();
             }
 
         }
 
-        if(coll.onWall && !coll.onGround)
+        if (coll.onWall && !coll.onGround)
         {
             if (x != 0)
             {
@@ -93,8 +99,10 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        if (!coll.onWall || coll.onGround) {
+        if (!coll.onWall || coll.onGround)
+        {
             onWall = false;
+            onWallPlayed = false;
         }
 
         if (coll.onGround && !groundTouch)
@@ -103,7 +111,7 @@ public class PlayerControl : MonoBehaviour
             groundTouch = true;
         }
 
-        if(!coll.onGround && groundTouch)
+        if (!coll.onGround && groundTouch)
         {
             groundTouch = false;
         }
@@ -112,8 +120,8 @@ public class PlayerControl : MonoBehaviour
         {
             Dash(side);
         }
-        
-        if(x > 0)
+
+        if (x > 0)
         {
             side = 1;
             anim.Flip(side);
@@ -125,23 +133,29 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D (Collision2D other) {
-        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "Wall") {
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "Wall")
+        {
             timeJumped = 0;
         }
 
-        if (other.gameObject.tag == "Trap") {
-            Debug.Log("Ded");
+        if (canMove && other.gameObject.tag == "Trap")
+        {
+            PlayerDead();
         }
     }
 
-    void OnTriggerEnter2D (Collider2D other) {
-        if (other.gameObject.tag == "Trap") {
-            Debug.Log("Ded");
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (canMove && other.gameObject.tag == "Trap")
+        {
+            PlayerDead();
         }
     }
 
-    void OnCollisionExit2D (Collision2D other) {
+    void OnCollisionExit2D(Collision2D other)
+    {
 
     }
 
@@ -158,20 +172,26 @@ public class PlayerControl : MonoBehaviour
     void Walk(Vector2 dir)
     {
 
-        if (!canMove) {
+        if (!canMove)
+        {
             return;
         }
 
-        if (!wallJumped) {
+        if (!wallJumped)
+        {
             rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
-        } else {
+        }
+        else
+        {
             rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
         }
 
     }
 
-    void Jump (Vector2 dir, bool wall) {
-        if (timeJumped < maxJump) {
+    void Jump(Vector2 dir, bool wall)
+    {
+        if (timeJumped < maxJump)
+        {
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.velocity += dir * jumpForce;
             timeJumped++;
@@ -180,16 +200,25 @@ public class PlayerControl : MonoBehaviour
 
     void WallSlide()
     {
-        if(coll.wallSide != side) {
+        if (onWall && !onWallPlayed)
+        {
+            onWallPlayed = true;
+            anim.SetTrigger("slide");
+        }
+
+        if (coll.wallSide != side)
+        {
             anim.Flip(side * -1);
         }
 
-        if (!canMove) {
+        if (!canMove)
+        {
             return;
         }
 
         bool pushingWall = false;
-        if((rb.velocity.x > 0 && coll.onRightWall) || (rb.velocity.x < 0 && coll.onLeftWall)) {
+        if ((rb.velocity.x > 0 && coll.onRightWall) || (rb.velocity.x < 0 && coll.onLeftWall))
+        {
             pushingWall = true;
         }
         float push = pushingWall ? 0 : rb.velocity.x;
@@ -211,7 +240,7 @@ public class PlayerControl : MonoBehaviour
         wallJumped = true;
         Vector2 wallDir = coll.onRightWall ? Vector2.left : Vector2.right;
         Jump((Vector2.up / 1.5f + wallDir / 1.5f), true);
-        
+
     }
 
     void Dash(float side)
@@ -222,6 +251,16 @@ public class PlayerControl : MonoBehaviour
         Vector2 dir = new Vector2(side, 0);
         rb.velocity += dir.normalized * dashSpeed;
         StartCoroutine(DashWait());
+    }
+
+    void PlayerDead()
+    {
+        StartCoroutine(resetScreen());
+        MasterControl.Instance.Deaths++;
+        canMove = false;
+        rb.isKinematic = true;
+        rb.velocity = Vector2.zero;
+        anim.SetTrigger("die");
     }
 
     IEnumerator DashWait()
@@ -256,5 +295,12 @@ public class PlayerControl : MonoBehaviour
         //Debug.Log("True");
         canMove = true;
     }
-    	
+
+    IEnumerator resetScreen()
+    {
+        yield return new WaitForSecondsRealtime(3f);
+        Scene scene = SceneManager.GetActiveScene();
+		SceneManager.LoadScene(scene.name);
+    }
+
 }

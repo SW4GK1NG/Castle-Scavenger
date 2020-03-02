@@ -14,7 +14,7 @@ public class SwingAxe : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.angularVelocity = MaxVelocity;
+        rb.angularVelocity = MaxVelocity * 3;
     }
 
     // Update is called once per frame

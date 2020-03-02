@@ -1,0 +1,45 @@
+fileFormatVersion: 2
+guid: 3f72f49f99d0ef04cba19466095c6c36
+ScriptedImporter:
+  fileIDToRecycleName:
+    2800000: Texture
+    21300000: Wall climb_0
+    21300002: Wall climb_1
+    21300004: Wall climb_2
+    21300006: Wall climb_3
+    21300008: Wall climb_4
+    21300010: Wall climb_5
+    21300012: Wall climb_6
+    21300014: Wall climb_7
+    21300016: Wall climb_8
+    21300018: Wall climb_9
+    21300020: Wall climb_10
+    21300022: Wall climb_11
+    21300024: Wall climb_12
+    21300026: Wall climb_13
+    21300028: Wall climb_14
+    21300030: Wall climb_15
+    21300032: Wall climb_16
+    21300034: Wall climb_17
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 25a63327f814cd04cbdbd7e8ae6dfcf9, type: 3}
+  textureSettings:
+    textureType: 8
+    pixelsPerUnit: 32
+    transparentMask: 0
+    transparentColor: {r: 1, g: 0, b: 1, a: 1}
+    meshType: 1
+    extrudeEdges: 1
+    spritePivot: {x: 0.5, y: 0.5}
+    generatePhysics: 1
+    wrapMode: 1
+    filterMode: 0
+    tileSize: {x: 32, y: 32}
+    tilePadding: {x: 0, y: 0}
+    tileOffset: {x: 0, y: 0}
+  animationSettings: []
+  atlas: {instanceID: 0}
+  importType: 0

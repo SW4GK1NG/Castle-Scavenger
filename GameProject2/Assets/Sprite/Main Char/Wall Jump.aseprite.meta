@@ -1,0 +1,69 @@
+fileFormatVersion: 2
+guid: 73ba0dd85534ee644af56d19fc646631
+ScriptedImporter:
+  fileIDToRecycleName:
+    2800000: Texture
+    7400000: Climb
+    7400002: Tran
+    7400004: Loop
+    7400006: Tran
+    7400008: Jump
+    21300000: Wall Jump_0
+    21300002: Wall Jump_1
+    21300004: Wall Jump_2
+    21300006: Wall Jump_3
+    21300008: Wall Jump_4
+    21300010: Wall Jump_5
+    21300012: Wall Jump_6
+    21300014: Wall Jump_7
+    21300016: Wall Jump_8
+    21300018: Wall Jump_9
+    21300020: Wall Jump_10
+    21300022: Wall Jump_11
+    21300024: Wall Jump_12
+    21300026: Wall Jump_13
+    21300028: Wall Jump_14
+    21300030: Wall Jump_15
+    21300032: Wall Jump_16
+    21300034: Wall Jump_17
+    21300036: Wall Jump_18
+    21300038: Wall Jump_19
+    21300040: Wall Jump_20
+    21300042: Wall Jump_21
+    21300044: Wall Jump_22
+    21300046: Wall Jump_23
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 25a63327f814cd04cbdbd7e8ae6dfcf9, type: 3}
+  textureSettings:
+    textureType: 8
+    pixelsPerUnit: 32
+    transparentMask: 0
+    transparentColor: {r: 1, g: 0, b: 1, a: 1}
+    meshType: 1
+    extrudeEdges: 1
+    spritePivot: {x: 0.5, y: 0.5}
+    generatePhysics: 1
+    wrapMode: 1
+    filterMode: 0
+    tileSize: {x: 32, y: 32}
+    tilePadding: {x: 0, y: 0}
+    tileOffset: {x: 0, y: 0}
+  animationSettings:
+  - animationName: Climb
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 0; To: 17"
+  - animationName: Tran
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 22; To: 22"
+  - animationName: Loop
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 19; To: 23"
+  - animationName: Jump
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 23; To: 23"
+  atlas: {instanceID: 0}
+  importType: 0
