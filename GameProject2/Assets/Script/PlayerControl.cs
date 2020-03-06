@@ -9,6 +9,7 @@ public class PlayerControl : MonoBehaviour
     Rigidbody2D rb;
     CollisionCheck coll;
     AnimScript anim;
+    AudioManager sound;
 
     [Header("Player Value")]
     public float speed;
@@ -46,6 +47,8 @@ public class PlayerControl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<CollisionCheck>();
         anim = GetComponentInChildren<AnimScript>();
+        sound = FindObjectOfType<AudioManager>();
+        
     }
 
     // Update is called once per frame
@@ -76,6 +79,7 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             anim.SetTrigger("jump");
+            sound.Play("Bruh");
 
             if (coll.onGround || timeJumped < maxJump)
             {
@@ -260,6 +264,7 @@ public class PlayerControl : MonoBehaviour
         canMove = false;
         rb.isKinematic = true;
         rb.velocity = Vector2.zero;
+        sound.Play("Dead");
         anim.SetTrigger("die");
     }
 

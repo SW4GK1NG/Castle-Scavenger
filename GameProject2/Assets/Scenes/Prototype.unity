@@ -62893,6 +62893,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Deaths: 0
+--- !u!1 &2036586062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2036586064}
+  - component: {fileID: 2036586063}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2036586063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036586062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25144241a7a58a047bb80d4e3eab6858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - Name: Bruh
+    Clip: {fileID: 8300000, guid: 4021dbee1e2de4e46a6d75c0d5acc75e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    Source: {fileID: 0}
+  - Name: Dead
+    Clip: {fileID: 8300000, guid: 9a8e2d2a0908d944ca2bb6c7c700d817, type: 3}
+    volume: 2
+    pitch: 1
+    loop: 0
+    Source: {fileID: 0}
+  - Name: 
+    Clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    Source: {fileID: 0}
+--- !u!4 &2036586064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036586062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.296923, y: 13.867077, z: 50.195206}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2112798230
 GameObject:
   m_ObjectHideFlags: 0
@@ -63156,6 +63218,11 @@ PrefabInstance:
     - target: {fileID: 4007115387248395391, guid: 7d8caa0a5d0916340a7f26b187de6bd7,
         type: 3}
       propertyPath: orthographic size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007115386434542884, guid: 7d8caa0a5d0916340a7f26b187de6bd7,
+        type: 3}
+      propertyPath: m_LookaheadSmoothing
       value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
