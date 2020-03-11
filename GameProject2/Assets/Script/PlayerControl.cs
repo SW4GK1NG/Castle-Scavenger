@@ -39,9 +39,6 @@ public class PlayerControl : MonoBehaviour
 
     bool groundTouch;
     bool hasDashed;
-
-
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -50,11 +47,8 @@ public class PlayerControl : MonoBehaviour
         sound = FindObjectOfType<AudioManager>();
         
     }
-
-    // Update is called once per frame
     void Update()
     {
-
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         Vector2 dir = new Vector2(x, y);
@@ -76,19 +70,18 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && canMove)
         {
-            anim.SetTrigger("jump");
             sound.Play("Bruh");
+            anim.SetTrigger("jump");
 
             if (coll.onGround || timeJumped < maxJump)
             {
-                //Debug.Log("Jump");
                 Jump(Vector2.up, false);
             }
             if (coll.onWall && !coll.onGround)
             {
-                //Debug.Log("Wall Jump");
+                anim.SetTrigger("jump");
                 WallJump();
             }
 
