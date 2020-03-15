@@ -44,11 +44,12 @@ public class SpikeLoop : MonoBehaviour
 
     IEnumerator Stab() {
         anim.SetTrigger("stab");
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSecondsRealtime(0.35f);
         coll.offset = activeOffset;
-        yield return new WaitForSecondsRealtime(1.1f);
+        yield return new WaitForSecondsRealtime(1.3f);
         coll.offset = passiveOffset;
         yield return new WaitForSecondsRealtime(Delay);
         StabLoop();
+        //StopAllCoroutines();
     }
 }

@@ -70,17 +70,18 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Jump") && canMove)
+        if (Input.GetButtonDown("Jump") && canMove && !isDashing)
         {
-            sound.Play("Bruh");
-            anim.SetTrigger("jump");
 
             if (coll.onGround || timeJumped < maxJump)
             {
+                sound.Play("Bruh");
+                anim.SetTrigger("jump");
                 Jump(Vector2.up, false);
             }
             if (coll.onWall && !coll.onGround)
             {
+                sound.Play("Bruh");
                 anim.SetTrigger("jump");
                 WallJump();
             }
@@ -236,7 +237,7 @@ public class PlayerControl : MonoBehaviour
 
         wallJumped = true;
         Vector2 wallDir = coll.onRightWall ? Vector2.left : Vector2.right;
-        Jump((Vector2.up / 1.5f + wallDir / 1.5f), true);
+        Jump((Vector2.up + wallDir / 1.5f), true);
 
     }
 

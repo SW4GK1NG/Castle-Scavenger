@@ -6,7 +6,10 @@ public class ParallaxBackground : MonoBehaviour
 {
     public Vector2 parallaxEffectMultiplier;
     public GameObject Camera;
+    bool infiniteHorizontal;
+    bool infiniteVertical;
     float textureUnitSizeX;
+    float textureUnitSizeY;
     Vector3 lastCamPosition;
     Transform camTransform;
 
@@ -18,6 +21,7 @@ public class ParallaxBackground : MonoBehaviour
         Sprite sprite = GetComponent<SpriteRenderer>().sprite;
         Texture2D texture = sprite.texture;
         textureUnitSizeX = texture.width / sprite.pixelsPerUnit;
+        textureUnitSizeY = texture.height / sprite.pixelsPerUnit;
     }
 
     void LateUpdate()
@@ -26,9 +30,18 @@ public class ParallaxBackground : MonoBehaviour
         transform.position += new Vector3(deltaMovement.x * parallaxEffectMultiplier.x, deltaMovement.y * parallaxEffectMultiplier.y);
         lastCamPosition = camTransform.position;
 
-        if (Mathf.Abs(camTransform.position.x - transform.position.x) >= textureUnitSizeX) {
-            float offsetPositionX = (camTransform.position.x - transform.position.x) % textureUnitSizeX;
-            transform.position = new Vector3(camTransform.position.x, transform.position.y);
+        if (infiniteHorizontal) {
+            if (Mathf.Abs(camTransform.position.x - transform.position.x) >= textureUnitSizeX) {
+                float offsetPositionX = (camTransform.position.x - transform.position.x) % textureUnitSizeX;
+                transform.position = new Vector3(camTransform.position.x + offsetPositionX, transform.position.y);
+            }
+        }
+
+        if (infiniteVertical) {
+            if (Mathf.Abs(camTransform.position.y - transform.position.y) >= textureUnitSizeY) {
+                float offsetPositionY = (camTransform.position.y - transform.position.y) % textureUnitSizeY;
+                transform.position = new Vector3(transform.position.x, camTransform.position.y + offsetPositionY);
+            }
         }
 
     }
