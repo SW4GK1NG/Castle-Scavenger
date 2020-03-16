@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 59f1405eaf5e7904cb85c1d659300b58
+guid: 778755a46ac4c424b8a12606a3771ff7
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: superboy
+  fontName: Pixeled
   fontNames:
-  - superboy
+  - Pixeled
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

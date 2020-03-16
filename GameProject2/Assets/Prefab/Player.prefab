@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 895385551}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.7, z: 0}
+  m_LocalPosition: {x: 0, y: 0.39, z: 0}
   m_LocalScale: {x: 6.5, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 4007115386056583707}
@@ -201,7 +201,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02308011, y: -0.14}
+  m_Offset: {x: 0.02308011, y: -0.114577055}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -212,7 +212,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.44424772, y: 1.2}
+  m_Size: {x: 0.44424772, y: 1.1491542}
   m_EdgeRadius: 0
 --- !u!70 &4007115386056583713
 CapsuleCollider2D:
@@ -275,16 +275,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   onGround: 0
-  onGround2: 0
   onWall: 0
   onRightWall: 0
   onLeftWall: 0
   wallSide: 0
   collisionRadius: 0.1
-  bottomOffset: {x: 0.14, y: -0.66}
-  bottomOffset2: {x: -0.09, y: -0.66}
-  rightOffset: {x: 0.16, y: 0}
-  leftOffset: {x: -0.11, y: 0}
+  bottomOffset: {x: 0.14, y: -0.6}
+  bottomOffset2: {x: -0.09, y: -0.6}
+  rightOffset: {x: 0.16, y: -0.15}
+  rightOffset2: {x: 0.16, y: 0.36}
+  rightOffset3: {x: 0.16, y: -0.59}
+  leftOffset: {x: -0.11, y: -0.15}
+  leftOffset2: {x: -0.11, y: 0.36}
+  leftOffset3: {x: -0.11, y: -0.59}
 --- !u!114 &4007115386056583709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,21 +424,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LookaheadTime: 0
-  m_LookaheadSmoothing: 5
+  m_LookaheadSmoothing: 10
   m_XDamping: 1
-  m_YDamping: 20
+  m_YDamping: 15
   m_ZDamping: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.6
   m_CameraDistance: 10
   m_DeadZoneWidth: 0.1
-  m_DeadZoneHeight: 0.219
+  m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
+  m_SoftZoneWidth: 0.59
+  m_SoftZoneHeight: 0.55
   m_BiasX: 0
-  m_BiasY: -0.441
+  m_BiasY: -0.2
   m_GroupFramingMode: 2
   m_AdjustmentMode: 2
   m_GroupFramingSize: 0.8

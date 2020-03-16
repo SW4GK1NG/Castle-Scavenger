@@ -26,9 +26,10 @@ public class SpikeLoop : MonoBehaviour
         Invoke("StabLoop", StartDelay);
 
         activeOffset = coll.offset;
-        passiveOffset = coll.offset + new Vector2(0, -0.66f);
+        passiveOffset = coll.offset + new Vector2(0, -0.4f);
 
-        coll.offset = passiveOffset;
+        //coll.offset = passiveOffset;
+        coll.enabled = false;
     }
 
     // Update is called once per frame
@@ -45,9 +46,9 @@ public class SpikeLoop : MonoBehaviour
     IEnumerator Stab() {
         anim.SetTrigger("stab");
         yield return new WaitForSecondsRealtime(0.35f);
-        coll.offset = activeOffset;
+        coll.enabled = true;
         yield return new WaitForSecondsRealtime(1.3f);
-        coll.offset = passiveOffset;
+        coll.enabled = false;
         yield return new WaitForSecondsRealtime(Delay);
         StabLoop();
         //StopAllCoroutines();

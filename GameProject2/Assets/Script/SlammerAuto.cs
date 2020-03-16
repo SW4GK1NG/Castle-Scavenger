@@ -42,13 +42,13 @@ public class SlammerAuto : MonoBehaviour
     }
 
     IEnumerator CooldownUp() {
-        yield return new WaitForSecondsRealtime(DelayDown);
+        yield return new WaitForSecondsRealtime(DelayUp);
         goBack();
         StopCoroutine(CooldownUp());
     }
 
     IEnumerator CooldownSmash() {
-        yield return new WaitForSecondsRealtime(DelayUp);
+        yield return new WaitForSecondsRealtime(DelayDown);
         LoopRepeat();
     }
 

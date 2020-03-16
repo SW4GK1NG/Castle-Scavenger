@@ -8,6 +8,7 @@ public class PlayerControl : MonoBehaviour
 {
     Rigidbody2D rb;
     CollisionCheck coll;
+    Collider2D coll2D;
     AnimScript anim;
     AudioManager sound;
 
@@ -44,6 +45,7 @@ public class PlayerControl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<CollisionCheck>();
         anim = GetComponentInChildren<AnimScript>();
+        coll2D = GetComponent<BoxCollider2D>();
         sound = FindObjectOfType<AudioManager>();
         
     }
@@ -114,17 +116,17 @@ public class PlayerControl : MonoBehaviour
             groundTouch = false;
         }
 
-        if (Input.GetButtonDown("Dash") && !hasDashed)
+        if (Input.GetButtonDown("Dash") && !hasDashed && canMove)
         {
             Dash(side);
         }
 
-        if (x > 0)
+        if (x > 0 && canMove)
         {
             side = 1;
             anim.Flip(side);
         }
-        if (x < 0)
+        if (x < 0 && canMove)
         {
             side = -1;
             anim.Flip(side);
@@ -257,6 +259,7 @@ public class PlayerControl : MonoBehaviour
         MasterControl.Instance.Deaths++;
         canMove = false;
         rb.isKinematic = true;
+        coll2D.isTrigger = true;
         rb.velocity = Vector2.zero;
         sound.Play("Dead");
         anim.SetTrigger("die");
