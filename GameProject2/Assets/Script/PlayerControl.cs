@@ -18,7 +18,6 @@ public class PlayerControl : MonoBehaviour
     public float dashSpeed;
     public float wallSlideSpeed;
     public float wallJumpLerp;
-    public int timeJumped = 0;
     public int maxJump = 2;
     float isMoving;
 
@@ -26,15 +25,17 @@ public class PlayerControl : MonoBehaviour
 
     [Header("Player Status")]
     public int side = 1;
+    public int timeJumped = 0;
     public bool isDead = false;
     public bool inGoal = false;
     public bool facingRight = true;
     public bool canMove = true;
-    public bool touchWall;
+    public bool canSlide = true;
     public bool onWall;
     public bool onWallPlayed;
     public bool isDashing;
     public bool wallJumped;
+    public bool intoWall;
 
     [Space]
 
@@ -75,6 +76,10 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetButtonDown("Jump") && canMove && !isDashing)
         {
 
+            if (coll.onWall && coll.onGround && x != 0) {
+                StartCoroutine(SlideDisable());
+            }
+
             if (coll.onGround || timeJumped < maxJump)
             {
                 sound.Play("Bruh");
@@ -90,7 +95,7 @@ public class PlayerControl : MonoBehaviour
 
         }
 
-        if (coll.onWall && !coll.onGround)
+        if (coll.onWall && !coll.onGround && canSlide)
         {
             if (x != 0)
             {
@@ -279,6 +284,13 @@ public class PlayerControl : MonoBehaviour
         GetComponent<Jump>().enabled = true;
         wallJumped = false;
         isDashing = false;
+    }
+
+    IEnumerator SlideDisable() {
+        canSlide = false;
+        yield return new WaitForSeconds(0.5f);
+        canSlide = true;
+        StopCoroutine(SlideDisable());
     }
 
     IEnumerator GroundDash()

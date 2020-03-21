@@ -4,27 +4,47 @@ using UnityEngine;
 
 public class ParallaxBackground : MonoBehaviour
 {
-    public Vector2 parallaxEffectMultiplier;
-    public GameObject Camera;
-    bool infiniteHorizontal;
-    bool infiniteVertical;
-    float textureUnitSizeX;
-    float textureUnitSizeY;
-    Vector3 lastCamPosition;
-    Transform camTransform;
+    //public Vector2 parallaxEffectMultiplier;
+    //public GameObject Camera;
+    //bool infiniteHorizontal;
+    //bool infiniteVertical;
+    //float textureUnitSizeX;
+    //float textureUnitSizeY;
+    //Vector3 lastCamPosition;
+    //Transform camTransform;
+    //Vector2 startpost;
+    //Vector2 endpost;
+    //Vector2 size;
+
+    public GameObject player;
+    public GameObject camera;
+
+    [Range(0f, 1f)]
+    public float moveSpeed;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        camTransform = Camera.transform;
+        /*camTransform = Camera.transform;
         lastCamPosition = camTransform.position;
         Sprite sprite = GetComponent<SpriteRenderer>().sprite;
         Texture2D texture = sprite.texture;
         textureUnitSizeX = texture.width / sprite.pixelsPerUnit;
-        textureUnitSizeY = texture.height / sprite.pixelsPerUnit;
+        textureUnitSizeY = texture.height / sprite.pixelsPerUnit;*/
+
+        /*size = transform.localScale;
+        transform.position = Camera.transform.position;*/
+
+
     }
 
-    void LateUpdate()
+    void Update() {
+        transform.position = new Vector2(player.transform.position.x * moveSpeed, camera.transform.position.y);
+    }
+
+    /*void LateUpdate()
     {
         Vector3 deltaMovement = camTransform.position - lastCamPosition;
         transform.position += new Vector3(deltaMovement.x * parallaxEffectMultiplier.x, deltaMovement.y * parallaxEffectMultiplier.y);
@@ -44,5 +64,5 @@ public class ParallaxBackground : MonoBehaviour
             }
         }
 
-    }
+    }*/
 }
