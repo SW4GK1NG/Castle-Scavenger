@@ -17,12 +17,13 @@ public class ParallaxBackground : MonoBehaviour
     //Vector2 size;
 
     public GameObject player;
-    public GameObject camera;
+    public GameObject cameraPos;
 
     [Range(0f, 1f)]
     public float moveSpeed;
-
-    
+    Vector2 offset;
+    float offsetX;
+    SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -37,11 +38,13 @@ public class ParallaxBackground : MonoBehaviour
         /*size = transform.localScale;
         transform.position = Camera.transform.position;*/
 
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        offset = spriteRenderer.size;
+        offsetX = offset.x * 2f;
     }
 
-    void Update() {
-        transform.position = new Vector2(player.transform.position.x * moveSpeed, camera.transform.position.y);
+    void FixedUpdate() {
+        transform.position = new Vector2((player.transform.position.x * moveSpeed) + offsetX, cameraPos.transform.position.y);
     }
 
     /*void LateUpdate()
