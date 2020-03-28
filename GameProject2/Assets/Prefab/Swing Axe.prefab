@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2490071620370605359}
   - component: {fileID: 2490071620370605344}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Re-Swinging Axe2_4 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2490071621125848065}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Swing Axe
   m_TagString: Trap
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2490071621277165388}
   - component: {fileID: 2490071621277165389}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Re-Swinging Axe2_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2490071621574378620}
   - component: {fileID: 2490071621574378621}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Re-Swinging Axe2_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 2490071621709096906}
   - component: {fileID: 2490071621709096905}
   - component: {fileID: 2490071621709096904}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Axe
   m_TagString: Trap
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 1.82}
-  m_ConnectedAnchor: {x: 8.5, y: 9.32}
+  m_ConnectedAnchor: {x: 8.5, y: 16.32}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -409,7 +409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2490071621911211404}
   - component: {fileID: 2490071621911211405}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2490071622015516114}
   - component: {fileID: 2490071622015516115}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Re-Swinging Axe2_4 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

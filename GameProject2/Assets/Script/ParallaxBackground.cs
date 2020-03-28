@@ -23,6 +23,7 @@ public class ParallaxBackground : MonoBehaviour
     public float moveSpeed;
     Vector2 offset;
     float offsetX;
+    public float offsetY;
     SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
@@ -44,7 +45,7 @@ public class ParallaxBackground : MonoBehaviour
     }
 
     void FixedUpdate() {
-        transform.position = new Vector2((player.transform.position.x * moveSpeed) + offsetX, cameraPos.transform.position.y);
+        transform.position = new Vector2((player.transform.position.x * moveSpeed) + offsetX, cameraPos.transform.position.y + offsetY);
     }
 
     /*void LateUpdate()

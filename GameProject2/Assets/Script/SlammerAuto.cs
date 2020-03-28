@@ -14,13 +14,14 @@ public class SlammerAuto : MonoBehaviour
     public float downSpeed;
     public float DelayUp;
     public float DelayDown;
+    public float startDelay;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
-        LoopRepeat();
+        Invoke("LoopRepeat", startDelay);
     }
 
     // Update is called once per frame

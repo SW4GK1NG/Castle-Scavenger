@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using DG.Tweening;
+//using DG.Tweening;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -19,7 +19,8 @@ public class PlayerControl : MonoBehaviour
     public float wallSlideSpeed;
     public float wallJumpLerp;
     public int maxJump = 2;
-    float isMoving;
+    public GameObject respawnPoint;
+    public string nextStage;
 
     [Space]
 
@@ -36,6 +37,7 @@ public class PlayerControl : MonoBehaviour
     public bool isDashing;
     public bool wallJumped;
     public bool intoWall;
+    float isMoving;
 
     [Space]
 
@@ -49,6 +51,9 @@ public class PlayerControl : MonoBehaviour
         coll2D = GetComponent<BoxCollider2D>();
         sound = FindObjectOfType<AudioManager>();
         
+        if (MasterControl.Instance.checkpointed == true) {
+            CheckpointRespawn();
+        }
     }
     void Update()
     {
@@ -57,7 +62,10 @@ public class PlayerControl : MonoBehaviour
         Vector2 dir = new Vector2(x, y);
 
         Walk(dir);
-        anim.SetHorizontalMovement(x, y, rb.velocity.y);
+
+        if (canMove) {
+            anim.SetHorizontalMovement(x, y, rb.velocity.y);
+        }
 
         if (coll.onGround && !isDashing)
         {
@@ -157,11 +165,21 @@ public class PlayerControl : MonoBehaviour
         {
             PlayerDead();
         }
+
+        if (other.gameObject.tag == "Checkpoint") {
+            MasterControl.Instance.checkpointed = true;
+        }
+
+        if (other.gameObject.tag == "Finish") {
+            StartCoroutine(EndStage());
+        }
     }
 
-    void OnCollisionExit2D(Collision2D other)
+    void OnTriggerExit2D(Collider2D other)
     {
-
+        if (other.gameObject.tag == "Bound") {
+            PlayerDead();
+        }
     }
 
     void GroundTouch()
@@ -258,6 +276,10 @@ public class PlayerControl : MonoBehaviour
         StartCoroutine(DashWait());
     }
 
+    void CheckpointRespawn() {
+        transform.position = respawnPoint.transform.position;
+    }
+
     void PlayerDead()
     {
         StartCoroutine(resetScreen());
@@ -308,6 +330,12 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(time);
         //Debug.Log("True");
         canMove = true;
+    }
+
+    IEnumerator EndStage() {
+        canMove = false;
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(nextStage);
     }
 
     IEnumerator resetScreen()

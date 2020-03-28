@@ -6,6 +6,7 @@ public class MasterControl : MonoBehaviour
 {
     public static MasterControl Instance;
     public int Deaths = 0;
+    public bool checkpointed = false;
     void Awake ()   
        {
         if (Instance == null)

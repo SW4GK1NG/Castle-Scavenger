@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2931780545816988198}
   - component: {fileID: 2931780545816988199}
   - component: {fileID: 2931780545816988192}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Axe
   m_TagString: Trap
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2931780546687757097}
   - component: {fileID: 2931780546687757102}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Re-Swinging Axe2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2931780547474322075}
   - component: {fileID: 2931780547474322072}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Re-Swinging_Axe2_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2931780547608813765}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Swing Axe 1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5924062056611832281}
   - component: {fileID: 5924062056611832282}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Re-Swinging_Axe2_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
