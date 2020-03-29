@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6421216226356040030}
   - component: {fileID: 6421216226356040017}
   - component: {fileID: 6421216226356040016}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Slammer4
   m_TagString: Trap
   m_Icon: {fileID: 0}
@@ -144,3 +144,5 @@ MonoBehaviour:
   downSpeed: 50
   DelayUp: 2
   DelayDown: 2
+  startDelay: 0
+  reverse: 0

@@ -47,7 +47,7 @@ public class SpikeLoop : MonoBehaviour
         anim.SetTrigger("stab");
         yield return new WaitForSecondsRealtime(0.35f);
         coll.enabled = true;
-        yield return new WaitForSecondsRealtime(1.3f);
+        yield return new WaitForSecondsRealtime(1.1f);
         coll.enabled = false;
         yield return new WaitForSecondsRealtime(Delay);
         StabLoop();

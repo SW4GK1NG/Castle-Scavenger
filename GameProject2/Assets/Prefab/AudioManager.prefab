@@ -56,7 +56,31 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     Source: {fileID: 0}
-  - Name: 
+  - Name: Jump
+    Clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    Source: {fileID: 0}
+  - Name: Swing
+    Clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    Source: {fileID: 0}
+  - Name: SlamDown
+    Clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    Source: {fileID: 0}
+  - Name: SlamHit
+    Clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    Source: {fileID: 0}
+  - Name: Walk
     Clip: {fileID: 0}
     volume: 0
     pitch: 0

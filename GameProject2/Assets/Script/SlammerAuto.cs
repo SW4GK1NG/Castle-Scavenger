@@ -15,20 +15,30 @@ public class SlammerAuto : MonoBehaviour
     public float DelayUp;
     public float DelayDown;
     public float startDelay;
+    public bool reverse;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
-        Invoke("LoopRepeat", startDelay);
+        if (reverse) {
+            downSpeed = downSpeed * -1;
+        }
+        Invoke("Ready", startDelay);
     }
 
     // Update is called once per frame
     void Update()
     {
         if (goingUp) {
-            if (transform.position.y >= startPos.y) {
+            if (!reverse && transform.position.y >= startPos.y) {
+                rb.velocity = Vector2.zero;
+                goingUp = false;
+                StartCoroutine(CooldownSmash());
+            }
+
+            if (reverse && transform.position.y <= startPos.y) {
                 rb.velocity = Vector2.zero;
                 goingUp = false;
                 StartCoroutine(CooldownSmash());
@@ -36,10 +46,23 @@ public class SlammerAuto : MonoBehaviour
         }
     }
 
-    void LoopRepeat() {
-        StopCoroutine(CooldownSmash());
+    void GoDown() {
+        StopCoroutine(Pullback());
         rb.velocity = new Vector2(0, -1 * downSpeed);
         StartCoroutine(CooldownUp());
+    }
+
+    void Ready() {
+        StartCoroutine(Pullback());
+    }
+
+    IEnumerator Pullback() {
+        StopCoroutine(CooldownSmash());
+        rb.velocity = new Vector2(0, downSpeed / 14);
+        yield return new WaitForSeconds(0.4f);
+        rb.velocity = Vector2.zero;
+        yield return new WaitForSeconds(0.6f);
+        GoDown();
     }
 
     IEnumerator CooldownUp() {
@@ -50,7 +73,8 @@ public class SlammerAuto : MonoBehaviour
 
     IEnumerator CooldownSmash() {
         yield return new WaitForSecondsRealtime(DelayDown);
-        LoopRepeat();
+        StartCoroutine(Pullback());
+        StopCoroutine(CooldownSmash());
     }
 
     void goBack() {

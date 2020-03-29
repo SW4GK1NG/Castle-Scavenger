@@ -166,10 +166,6 @@ public class PlayerControl : MonoBehaviour
             PlayerDead();
         }
 
-        if (other.gameObject.tag == "Checkpoint") {
-            MasterControl.Instance.checkpointed = true;
-        }
-
         if (other.gameObject.tag == "Finish") {
             StartCoroutine(EndStage());
         }
@@ -334,6 +330,8 @@ public class PlayerControl : MonoBehaviour
 
     IEnumerator EndStage() {
         canMove = false;
+        rb.velocity = Vector2.zero;
+        MasterControl.Instance.checkpointed = false;
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(nextStage);
     }

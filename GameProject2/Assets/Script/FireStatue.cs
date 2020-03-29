@@ -8,6 +8,7 @@ public class FireStatue : MonoBehaviour
     GameObject FirePoint;
     bool faceLeft;
 
+
     [Header("Config")]
     public GameObject Fireball;
     public float FireSpeed;
@@ -17,7 +18,7 @@ public class FireStatue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FirePoint = GameObject.Find("FirePoint");
+        FirePoint = this.transform.Find("FirePoint").gameObject;
 
         if (transform.localScale.x >= 0) {
             faceLeft = false;
