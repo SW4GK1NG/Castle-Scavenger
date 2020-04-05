@@ -1439,10 +1439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2490071621709096905, guid: b995de20bb0e5694bbbaebec7d1a22e1,
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
-=======
->>>>>>> parent of 15a6da7... Stage 1 Floor Revamp, Adding Decoration
         type: 3}
       propertyPath: MaxVelocity
       value: 90
