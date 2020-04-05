@@ -15,6 +15,7 @@ public class SlammerAuto : MonoBehaviour
     public float DelayUp;
     public float DelayDown;
     public float startDelay;
+    public float maxTravel;
     public bool reverse;
 
     // Start is called before the first frame update
@@ -42,6 +43,18 @@ public class SlammerAuto : MonoBehaviour
                 rb.velocity = Vector2.zero;
                 goingUp = false;
                 StartCoroutine(CooldownSmash());
+            }
+        }
+
+        if (!reverse) {
+            if (transform.position.y <= startPos.y - maxTravel) {
+                rb.velocity = Vector2.zero;
+                StartCoroutine(CooldownUp());
+            }
+        } else {
+            if (transform.position.y >= startPos.y + maxTravel) {
+                rb.velocity = Vector2.zero;
+                StartCoroutine(CooldownUp());
             }
         }
     }
@@ -89,4 +102,5 @@ public class SlammerAuto : MonoBehaviour
         }
         
     }
+
 }

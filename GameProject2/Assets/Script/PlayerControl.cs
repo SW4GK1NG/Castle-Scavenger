@@ -37,7 +37,10 @@ public class PlayerControl : MonoBehaviour
     public bool isDashing;
     public bool wallJumped;
     public bool intoWall;
+    public bool gameEnd = false;
     float isMoving;
+    float x;
+    float y;
 
     [Space]
 
@@ -57,8 +60,8 @@ public class PlayerControl : MonoBehaviour
     }
     void Update()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        x = Input.GetAxis("Horizontal");
+        y = Input.GetAxis("Vertical");
         Vector2 dir = new Vector2(x, y);
 
         Walk(dir);
@@ -144,6 +147,10 @@ public class PlayerControl : MonoBehaviour
             side = -1;
             anim.Flip(side);
         }
+
+        if (gameEnd) {
+            x = 1;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -174,7 +181,7 @@ public class PlayerControl : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Bound") {
-            PlayerDead();
+            //PlayerDead();
         }
     }
 
@@ -330,7 +337,8 @@ public class PlayerControl : MonoBehaviour
 
     IEnumerator EndStage() {
         canMove = false;
-        rb.velocity = Vector2.zero;
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        gameEnd = true;
         Debug.Log("Attemp Claer CP");
         MasterControl.Instance.checkpointed = false;
         Debug.Log("Claer CP");

@@ -10,6 +10,7 @@ public class SpikeLoop : MonoBehaviour
     Animator anim;
     Vector2 activeOffset;
     Vector2 passiveOffset;
+    AudioManager sound;
 
     [Header("Adjust")]
     public float StartDelay;
@@ -20,6 +21,7 @@ public class SpikeLoop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sound = FindObjectOfType<AudioManager>();
         coll = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
 
@@ -47,6 +49,7 @@ public class SpikeLoop : MonoBehaviour
         anim.SetTrigger("stab");
         yield return new WaitForSecondsRealtime(0.35f);
         coll.enabled = true;
+        //sound.Play("SpikeStab");
         yield return new WaitForSecondsRealtime(1.1f);
         coll.enabled = false;
         yield return new WaitForSecondsRealtime(Delay);
