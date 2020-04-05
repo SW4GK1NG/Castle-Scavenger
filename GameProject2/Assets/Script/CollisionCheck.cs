@@ -34,12 +34,14 @@ public class CollisionCheck : MonoBehaviour
     {  
         onGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, groundLayer)
             || Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset2, collisionRadius, groundLayer);
+
         onWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer) 
             || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
 
         onRightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer)
             || Physics2D.OverlapCircle((Vector2)transform.position + rightOffset2, collisionRadius, groundLayer)
             || Physics2D.OverlapCircle((Vector2)transform.position + rightOffset3, collisionRadius, groundLayer);
+            
         onLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer)
             || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset2, collisionRadius, groundLayer)
             || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset3, collisionRadius, groundLayer);
@@ -52,18 +54,21 @@ public class CollisionCheck : MonoBehaviour
 
         var positions = new Vector2[] { bottomOffset, rightOffset, leftOffset };
 
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.green;
 
         Gizmos.DrawWireSphere((Vector2)transform.position + bottomOffset, collisionRadius);
         Gizmos.DrawWireSphere((Vector2)transform.position + bottomOffset2, collisionRadius);
 
-        Gizmos.color = Color.green;
+        Gizmos.color = Color.red;
 
         Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset, collisionRadius);
-        Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset, collisionRadius);
         Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset2, collisionRadius);
-        Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset2, collisionRadius);
         Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset3, collisionRadius);
+
+        Gizmos.color = Color.blue;
+
+        Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset, collisionRadius);
+        Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset2, collisionRadius);
         Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset3, collisionRadius);
     }
 }

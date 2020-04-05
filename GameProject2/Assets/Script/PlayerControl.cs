@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-//using DG.Tweening;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -62,6 +61,10 @@ public class PlayerControl : MonoBehaviour
         Vector2 dir = new Vector2(x, y);
 
         Walk(dir);
+
+        if (coll.onGround && timeJumped == 2) {
+            timeJumped = 0;
+        }
 
         if (canMove) {
             anim.SetHorizontalMovement(x, y, rb.velocity.y);
