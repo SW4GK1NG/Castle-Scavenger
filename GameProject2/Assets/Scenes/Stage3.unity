@@ -2534,7 +2534,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -20
-  m_Sprite: {fileID: 21300000, guid: 61baf39eb2e26ae4483a71b83a618792, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 55220f4bf6f8c224990cba6f9fecdbe4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -150089,6 +150089,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
     - target: {fileID: 2490071621709096905, guid: b995de20bb0e5694bbbaebec7d1a22e1,
         type: 3}
       propertyPath: needBoots
@@ -150258,6 +150259,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+=======
+>>>>>>> parent of 15a6da7... Stage 1 Floor Revamp, Adding Decoration
 =======
 >>>>>>> parent of 15a6da7... Stage 1 Floor Revamp, Adding Decoration
     - target: {fileID: 2490071621709096906, guid: b995de20bb0e5694bbbaebec7d1a22e1,
