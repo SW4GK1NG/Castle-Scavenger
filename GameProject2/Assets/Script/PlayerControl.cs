@@ -334,7 +334,9 @@ public class PlayerControl : MonoBehaviour
     IEnumerator EndStage() {
         canMove = false;
         rb.velocity = Vector2.zero;
+        Debug.Log("Attemp Claer CP");
         MasterControl.Instance.checkpointed = false;
+        Debug.Log("Claer CP");
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(nextStage);
     }
