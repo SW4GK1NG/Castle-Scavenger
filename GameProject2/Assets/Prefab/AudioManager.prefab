@@ -59,36 +59,18 @@ MonoBehaviour:
   - Name: Jump
     Clip: {fileID: 0}
     volume: 0
-    pitch: 0
-    loop: 0
-    Source: {fileID: 0}
-  - Name: Swing
-    Clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
-    Source: {fileID: 0}
-  - Name: SlamDown
-    Clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
-    Source: {fileID: 0}
-  - Name: SlamHit
-    Clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+    pitch: 1
     loop: 0
     Source: {fileID: 0}
   - Name: Walk
     Clip: {fileID: 0}
     volume: 0
-    pitch: 0
+    pitch: 1
     loop: 0
     Source: {fileID: 0}
-  - Name: SpikeStab
-    Clip: {fileID: 8300000, guid: 75eea1ecebd82c147aa8f1f5102b7a32, type: 3}
-    volume: 0.4
-    pitch: 0
+  - Name: WallSlide
+    Clip: {fileID: 0}
+    volume: 0
+    pitch: 1
     loop: 0
     Source: {fileID: 0}
