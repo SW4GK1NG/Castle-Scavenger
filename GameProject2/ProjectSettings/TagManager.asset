@@ -9,6 +9,7 @@ TagManager:
   - Trap
   - Bound
   - Checkpoint
+  - Gem
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,52 @@
+fileFormatVersion: 2
+guid: 9ff10a1ba1030094990b25b2bfe058a8
+ScriptedImporter:
+  fileIDToRecycleName:
+    2800000: Texture
+    7400000: Done
+    7400002: Tag
+    7400004: Kek
+    21300000: Idle-Tro_0
+    21300002: Idle-Tro_1
+    21300004: Idle-Tro_2
+    21300006: Idle-Tro_3
+    21300008: Idle-Tro_4
+    21300010: Idle-Tro_5
+    21300012: Idle-Tro_6
+    21300014: Idle-Tro_7
+    21300016: Idle-Tro_8
+    21300018: Idle-Tro_9
+    21300020: Idle-Tro_10
+    21300022: Idle-Tro_11
+    21300024: Idle-Tro_12
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 25a63327f814cd04cbdbd7e8ae6dfcf9, type: 3}
+  textureSettings:
+    textureType: 8
+    pixelsPerUnit: 32
+    transparentMask: 0
+    transparentColor: {r: 1, g: 0, b: 1, a: 1}
+    meshType: 1
+    extrudeEdges: 1
+    spritePivot: {x: 0.5, y: 0.5}
+    generatePhysics: 1
+    wrapMode: 1
+    filterMode: 0
+    tileSize: {x: 32, y: 32}
+    tilePadding: {x: 0, y: 0}
+    tileOffset: {x: 0, y: 0}
+  animationSettings:
+  - animationName: Done
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 0; To: 5"
+  - animationName: Tag
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 0; To: 3"
+  - animationName: Kek
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 6; To: 12"
+  atlas: {instanceID: 0}
+  importType: 0

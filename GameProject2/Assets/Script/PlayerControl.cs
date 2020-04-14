@@ -21,6 +21,8 @@ public class PlayerControl : MonoBehaviour
     public int maxJump = 2;
     public GameObject respawnPoint;
     public string nextStage;
+    public LevelLoader LevelLoaderObject;
+    public GameObject EndCanvas;
 
     [Space]
 
@@ -38,6 +40,7 @@ public class PlayerControl : MonoBehaviour
     public bool wallJumped;
     public bool intoWall;
     public bool gameEnd = false;
+    public bool gotGem = false;
     float isMoving;
     float x;
     float y;
@@ -60,13 +63,20 @@ public class PlayerControl : MonoBehaviour
     }
     void Update()
     {
-        x = Input.GetAxis("Horizontal");
-        y = Input.GetAxis("Vertical");
+        if (!gameEnd || !gotGem) {
+            x = Input.GetAxis("Horizontal");
+            y = Input.GetAxis("Vertical");
+        }
+
         Vector2 dir = new Vector2(x, y);
 
         Walk(dir);
 
         if (canMove) {
+            anim.SetHorizontalMovement(x, y, rb.velocity.y);
+        } else if (!canMove && gotGem) {
+            anim.SetHorizontalMovement(0, 0, rb.velocity.y);
+        } else if (!canMove && !gotGem) {
             anim.SetHorizontalMovement(x, y, rb.velocity.y);
         }
 
@@ -149,7 +159,13 @@ public class PlayerControl : MonoBehaviour
         }
 
         if (gameEnd) {
-            x = 1;
+            ForceWalk(new Vector2(1, 0));
+            anim.SetHorizontalMovement(1, y, rb.velocity.y);
+        }
+
+        if (gotGem) {
+            x = 0;
+            y = 0;
         }
     }
 
@@ -176,6 +192,10 @@ public class PlayerControl : MonoBehaviour
         if (other.gameObject.tag == "Finish") {
             StartCoroutine(EndStage());
         }
+
+        if (other.gameObject.tag == "Gem") {
+            StartCoroutine(GetGem(other.gameObject));
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -198,7 +218,7 @@ public class PlayerControl : MonoBehaviour
     void Walk(Vector2 dir)
     {
 
-        if (!canMove)
+        if (!canMove && !gameEnd)
         {
             return;
         }
@@ -212,6 +232,10 @@ public class PlayerControl : MonoBehaviour
             rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
         }
 
+    }
+
+    void ForceWalk(Vector2 dir) {
+        rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
     }
 
     void Jump(Vector2 dir, bool wall)
@@ -339,18 +363,32 @@ public class PlayerControl : MonoBehaviour
         canMove = false;
         rb.velocity = new Vector2(rb.velocity.x, 0);
         gameEnd = true;
+        x = 1;
         Debug.Log("Attemp Claer CP");
         MasterControl.Instance.checkpointed = false;
         Debug.Log("Claer CP");
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene(nextStage);
+        yield return new WaitForSeconds(2f);
+        x = 0;
+        LevelLoaderObject.LoadNextLevel(nextStage);
+    }
+
+    IEnumerator GetGem(GameObject GemHit) {
+        canMove = false;
+        gotGem = true;
+        rb.velocity = new Vector2(rb.velocity.x / 3, rb.velocity.y);
+        anim.Stop();
+        yield return new WaitForSeconds(1.25f);
+        Destroy(GemHit);
+        anim.SetTrigger("gem");
+        yield return new WaitForSeconds(3.25f);
+        Instantiate(EndCanvas);
     }
 
     IEnumerator resetScreen()
     {
         yield return new WaitForSecondsRealtime(3f);
         Scene scene = SceneManager.GetActiveScene();
-		SceneManager.LoadScene(scene.name);
+		LevelLoaderObject.LoadNextLevel(scene.name);
     }
 
 }

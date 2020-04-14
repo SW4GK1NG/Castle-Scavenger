@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class Button : MonoBehaviour
 {
 
+    public LevelLoader LevelLoaderObject;
     public string NextLevel;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        LevelLoaderObject = FindObjectOfType<LevelLoader>();
     }
 
     // Update is called once per frame
@@ -22,7 +23,7 @@ public class Button : MonoBehaviour
 
     public void PressStart() {
         //Something here
-        SceneManager.LoadScene(NextLevel);
+        LevelLoaderObject.LoadNextLevel(NextLevel);
     }
 
     public void ExitGame() {

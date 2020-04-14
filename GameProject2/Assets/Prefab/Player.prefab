@@ -311,7 +311,9 @@ MonoBehaviour:
   maxJump: 2
   respawnPoint: {fileID: 0}
   nextStage: 
-  CPT: {fileID: 1505235624189783117, guid: 2012f1b0e4cc06347b2a839badaefcdc, type: 3}
+  LevelLoaderObject: {fileID: 0}
+  EndCanvas: {fileID: 5554974367098169389, guid: ff254802b79e120469847c6b288e110e,
+    type: 3}
   side: 1
   timeJumped: 0
   isDead: 0
@@ -324,6 +326,8 @@ MonoBehaviour:
   isDashing: 0
   wallJumped: 0
   intoWall: 0
+  gameEnd: 0
+  gotGem: 0
 --- !u!114 &4007115386056583711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,7 +559,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4007115387248395388}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 142.04999, y: 1.4920006, z: -10}
+  m_LocalPosition: {x: 0.012108326, y: 1.1993389, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 895385553}

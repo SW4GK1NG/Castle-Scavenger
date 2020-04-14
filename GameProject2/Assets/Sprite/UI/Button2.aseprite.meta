@@ -1,0 +1,47 @@
+fileFormatVersion: 2
+guid: 61a777bb91cce594f9b57b2fb36fe579
+ScriptedImporter:
+  fileIDToRecycleName:
+    2800000: Texture
+    7400000: Shin
+    7400002: Tag
+    21300000: Button2_0
+    21300002: Button2_1
+    21300004: Button2_2
+    21300006: Button2_3
+    21300008: Button2_4
+    21300010: Button2_5
+    21300012: Button2_6
+    21300014: Button2_7
+    21300016: Button2_8
+    21300018: Button2_9
+    21300020: Button2_10
+    21300022: Button2_11
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 25a63327f814cd04cbdbd7e8ae6dfcf9, type: 3}
+  textureSettings:
+    textureType: 8
+    pixelsPerUnit: 32
+    transparentMask: 0
+    transparentColor: {r: 1, g: 0, b: 1, a: 1}
+    meshType: 1
+    extrudeEdges: 1
+    spritePivot: {x: 0.5, y: 0.5}
+    generatePhysics: 1
+    wrapMode: 1
+    filterMode: 0
+    tileSize: {x: 32, y: 32}
+    tilePadding: {x: 0, y: 0}
+    tileOffset: {x: 0, y: 0}
+  animationSettings:
+  - animationName: Shin
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 0; To: 11"
+  - animationName: Tag
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 1; To: 11"
+  atlas: {instanceID: 0}
+  importType: 0

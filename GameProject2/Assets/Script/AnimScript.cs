@@ -23,7 +23,9 @@ public class AnimScript : MonoBehaviour
         anim.SetBool("onWall", coll.onWall);
         anim.SetBool("onRightWall", coll.onRightWall);
         anim.SetBool("wallSlide", move.onWall);
-        anim.SetBool("canMove", move.canMove);
+        if (!move.gotGem) {
+            anim.SetBool("canMove", move.canMove);
+        }
         anim.SetBool("isDashing", move.isDashing);
 
     }
@@ -56,5 +58,9 @@ public class AnimScript : MonoBehaviour
 
         bool state = (side == 1) ? false : true;
         sr.flipX = state;
+    }
+
+    public void Stop() {
+        anim.Play("PlayerIdle");
     }
 }
