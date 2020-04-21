@@ -12,7 +12,7 @@ public class PlayerControl : MonoBehaviour
     AnimScript anim;
     AudioManager sound;
 
-    [Header("Player Value")]
+    [Header("Player Config")]
     public float speed;
     public float jumpForce;
     public float dashSpeed;
@@ -23,6 +23,9 @@ public class PlayerControl : MonoBehaviour
     public string nextStage;
     public LevelLoader LevelLoaderObject;
     public GameObject EndCanvas;
+    public GameObject BloodSpill;
+    public ParticleSystem Dust;
+    public ParticleSystem DustRun;
 
     [Space]
 
@@ -71,6 +74,10 @@ public class PlayerControl : MonoBehaviour
         Vector2 dir = new Vector2(x, y);
 
         Walk(dir);
+
+        if(x == 0 || !canMove || !gameEnd || !groundTouch) {
+            DustRun.Stop();
+        }
 
         if (canMove) {
             anim.SetHorizontalMovement(x, y, rb.velocity.y);
@@ -122,6 +129,7 @@ public class PlayerControl : MonoBehaviour
             {
                 onWall = true;
                 WallSlide();
+                Dust.Play();
             }
         }
 
@@ -174,6 +182,7 @@ public class PlayerControl : MonoBehaviour
         if (other.gameObject.tag == "Ground" || other.gameObject.tag == "Wall")
         {
             timeJumped = 0;
+            Dust.Play();
         }
 
         if (canMove && other.gameObject.tag == "Trap")
@@ -211,8 +220,6 @@ public class PlayerControl : MonoBehaviour
         isDashing = false;
 
         side = anim.sr.flipX ? -1 : 1;
-
-        //jumpParticle.Play();
     }
 
     void Walk(Vector2 dir)
@@ -226,6 +233,7 @@ public class PlayerControl : MonoBehaviour
         if (!wallJumped)
         {
             rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
+            DustRun.Play();
         }
         else
         {
@@ -311,6 +319,7 @@ public class PlayerControl : MonoBehaviour
     {
         StartCoroutine(resetScreen());
         MasterControl.Instance.Deaths++;
+        Instantiate(BloodSpill, transform.position, Quaternion.identity);
         canMove = false;
         rb.isKinematic = true;
         coll2D.isTrigger = true;
@@ -344,6 +353,7 @@ public class PlayerControl : MonoBehaviour
 
     IEnumerator GroundDash()
     {
+        Dust.Play();
         yield return new WaitForSeconds(.25f);
         if (coll.onGround)
             hasDashed = false;

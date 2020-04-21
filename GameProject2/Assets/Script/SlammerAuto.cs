@@ -17,12 +17,14 @@ public class SlammerAuto : MonoBehaviour
     public float startDelay;
     public float maxTravel;
     public bool reverse;
+    public ParticleSystem Dust;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
+        Dust = GetComponentInChildren<ParticleSystem>();
         if (reverse) {
             downSpeed = downSpeed * -1;
         }
@@ -34,12 +36,14 @@ public class SlammerAuto : MonoBehaviour
     {
         if (goingUp) {
             if (!reverse && transform.position.y >= startPos.y) {
+                Dust.Stop();
                 rb.velocity = Vector2.zero;
                 goingUp = false;
                 StartCoroutine(CooldownSmash());
             }
 
             if (reverse && transform.position.y <= startPos.y) {
+                Dust.Stop();
                 rb.velocity = Vector2.zero;
                 goingUp = false;
                 StartCoroutine(CooldownSmash());
@@ -79,6 +83,7 @@ public class SlammerAuto : MonoBehaviour
     }
 
     IEnumerator CooldownUp() {
+        Dust.Play();
         yield return new WaitForSecondsRealtime(DelayUp);
         goBack();
         StopCoroutine(CooldownUp());
@@ -97,7 +102,9 @@ public class SlammerAuto : MonoBehaviour
     }
 
     void onCollisionEnter2D(Collision2D other) {
+        Dust.Play();
         if (other.gameObject.tag == "Ground") {
+            Dust.Play();
             StartCoroutine(CooldownUp());
         }
         
