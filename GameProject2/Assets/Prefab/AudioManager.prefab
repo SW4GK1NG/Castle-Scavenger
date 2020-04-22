@@ -43,34 +43,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25144241a7a58a047bb80d4e3eab6858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Instance: {fileID: 0}
   Sounds:
-  - Name: Bruh
-    Clip: {fileID: 8300000, guid: 4021dbee1e2de4e46a6d75c0d5acc75e, type: 3}
-    volume: 0.1
+  - Name: Jump
+    Clip: {fileID: 8300000, guid: 236bc667debbf184e88eeae47f29a048, type: 3}
+    volume: 0.75
     pitch: 1
     loop: 0
     Source: {fileID: 0}
   - Name: Dead
-    Clip: {fileID: 8300000, guid: 9a8e2d2a0908d944ca2bb6c7c700d817, type: 3}
-    volume: 2
-    pitch: 1
+    Clip: {fileID: 8300000, guid: fe40677a57b7dda428ab1e51087c0ddb, type: 3}
+    volume: 0.75
+    pitch: 0.9
     loop: 0
     Source: {fileID: 0}
-  - Name: Jump
-    Clip: {fileID: 0}
-    volume: 0
+  - Name: Drop
+    Clip: {fileID: 8300000, guid: 3370b7eb2f1f9ec4196d0ca24f5762fc, type: 3}
+    volume: 1.2
     pitch: 1
     loop: 0
     Source: {fileID: 0}
   - Name: Walk
-    Clip: {fileID: 0}
-    volume: 0
+    Clip: {fileID: 8300000, guid: cbd62b6679f2d624286ba546f040a87d, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 1
+    Source: {fileID: 0}
+  - Name: WallSlide
+    Clip: {fileID: 8300000, guid: 66857471a49aec34e89f512ddd43455d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    Source: {fileID: 0}
+  - Name: Level1
+    Clip: {fileID: 8300000, guid: 5cfe73c2f24614f41b9d0e53bef8f19b, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 1
+    Source: {fileID: 0}
+  - Name: Level2
+    Clip: {fileID: 8300000, guid: 755455595f340d34289a139070cf1b4b, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 1
+    Source: {fileID: 0}
+  - Name: Level3
+    Clip: {fileID: 8300000, guid: 1b4a3c5bfb368544c9ce368a3046ea17, type: 3}
+    volume: 0.15
+    pitch: 1
+    loop: 1
+    Source: {fileID: 0}
+  - Name: Checkpoint
+    Clip: {fileID: 8300000, guid: 00dcb02a53b8fbd4aa531d3be8d46d54, type: 3}
+    volume: 0.8
     pitch: 1
     loop: 0
     Source: {fileID: 0}
-  - Name: WallSlide
-    Clip: {fileID: 0}
-    volume: 0
+  - Name: Mainmenu
+    Clip: {fileID: 8300000, guid: 6b84923524b8877499ce1d87afd42baa, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 1
+    Source: {fileID: 0}
+  - Name: Win
+    Clip: {fileID: 8300000, guid: 22247ba5ab6967247937b8c3adf6df5a, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    Source: {fileID: 0}
+  - Name: End
+    Clip: {fileID: 8300000, guid: 71f67fda808cb0e4f99ff3d958c8c139, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    Source: {fileID: 0}
+  - Name: Dash
+    Clip: {fileID: 8300000, guid: ccb5fb64aeb62e04e8e3951481a59762, type: 3}
+    volume: 0.6
     pitch: 1
     loop: 0
     Source: {fileID: 0}

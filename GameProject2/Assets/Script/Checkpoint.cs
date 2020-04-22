@@ -5,11 +5,12 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     public GameObject CPT;
+    AudioManager sound;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        sound = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -20,6 +21,7 @@ public class Checkpoint : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Player" && MasterControl.Instance.checkpointed == false) {
+            sound.Play("Checkpoint");
             MasterControl.Instance.checkpointed = true;
             GameObject TextCP = Instantiate(CPT);
             CheckpointText CPTScript = TextCP.GetComponent<CheckpointText>();

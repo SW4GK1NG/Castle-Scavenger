@@ -8,6 +8,7 @@ public class SlammerAuto : MonoBehaviour
     Rigidbody2D rb;
     Vector2 startPos;
     bool goingUp;
+    AudioSource sound;
 
     [Header("Adjust")]
 
@@ -22,6 +23,7 @@ public class SlammerAuto : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sound = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
         Dust = GetComponentInChildren<ParticleSystem>();
@@ -84,6 +86,7 @@ public class SlammerAuto : MonoBehaviour
 
     IEnumerator CooldownUp() {
         Dust.Play();
+        sound.Play();
         yield return new WaitForSecondsRealtime(DelayUp);
         goBack();
         StopCoroutine(CooldownUp());

@@ -7,7 +7,7 @@ public class FireStatue : MonoBehaviour
     [HideInInspector]
     GameObject FirePoint;
     bool faceLeft;
-
+    AudioSource sound;
 
     [Header("Config")]
     public GameObject Fireball;
@@ -18,6 +18,7 @@ public class FireStatue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sound = GetComponent<AudioSource>();
         FirePoint = this.transform.Find("FirePoint").gameObject;
 
         if (transform.localScale.x >= 0) {
@@ -36,6 +37,7 @@ public class FireStatue : MonoBehaviour
     }
 
     void Shoot() {
+        sound.Play();
         GameObject ShotFire = Instantiate(Fireball);
         Fire FireScript = ShotFire.GetComponent<Fire>();
         FireScript.location = FirePoint.transform.position;

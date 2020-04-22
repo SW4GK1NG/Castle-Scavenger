@@ -47,6 +47,8 @@ public class PlayerControl : MonoBehaviour
     float isMoving;
     float x;
     float y;
+    bool soundWalkPlaying;
+    bool slideSound;
 
     [Space]
 
@@ -75,8 +77,16 @@ public class PlayerControl : MonoBehaviour
 
         Walk(dir);
 
-        if(x == 0 || !canMove || !gameEnd || !groundTouch) {
+        if(x == 0 || !canMove || gameEnd || !groundTouch) {
             DustRun.Stop();
+            sound.Stop("Walk");
+            soundWalkPlaying = false;
+        } else {
+            if (!soundWalkPlaying) {
+                DustRun.Play();
+                sound.Play("Walk");
+                soundWalkPlaying = true;
+            }
         }
 
         if (canMove) {
@@ -110,13 +120,14 @@ public class PlayerControl : MonoBehaviour
 
             if (coll.onGround || timeJumped < maxJump)
             {
-                sound.Play("Bruh");
+                sound.Play("Jump");
                 anim.SetTrigger("jump");
+                Dust.Play();
                 Jump(Vector2.up, false);
             }
             if (coll.onWall && !coll.onGround)
             {
-                sound.Play("Bruh");
+                sound.Play("Jump");
                 anim.SetTrigger("jump");
                 WallJump();
             }
@@ -130,6 +141,10 @@ public class PlayerControl : MonoBehaviour
                 onWall = true;
                 WallSlide();
                 Dust.Play();
+                if (!slideSound) {
+                    sound.Play("WallSlide");
+                    slideSound = true;
+                }
             }
         }
 
@@ -137,6 +152,8 @@ public class PlayerControl : MonoBehaviour
         {
             onWall = false;
             onWallPlayed = false;
+            sound.Stop("WallSlide");
+            slideSound = false;
         }
 
         if (coll.onGround && !groundTouch)
@@ -183,6 +200,7 @@ public class PlayerControl : MonoBehaviour
         {
             timeJumped = 0;
             Dust.Play();
+            sound.Play("Drop");
         }
 
         if (canMove && other.gameObject.tag == "Trap")
@@ -233,7 +251,6 @@ public class PlayerControl : MonoBehaviour
         if (!wallJumped)
         {
             rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
-            DustRun.Play();
         }
         else
         {
@@ -262,6 +279,7 @@ public class PlayerControl : MonoBehaviour
         {
             onWallPlayed = true;
             anim.SetTrigger("slide");
+
         }
 
         if (coll.wallSide != side)
@@ -317,6 +335,8 @@ public class PlayerControl : MonoBehaviour
 
     void PlayerDead()
     {
+        sound.Stop("WallSlide");
+        //sound.FadeOut("Level1");
         StartCoroutine(resetScreen());
         MasterControl.Instance.Deaths++;
         Instantiate(BloodSpill, transform.position, Quaternion.identity);
@@ -354,6 +374,7 @@ public class PlayerControl : MonoBehaviour
     IEnumerator GroundDash()
     {
         Dust.Play();
+        sound.Play("Dash");
         yield return new WaitForSeconds(.25f);
         if (coll.onGround)
             hasDashed = false;
@@ -373,11 +394,16 @@ public class PlayerControl : MonoBehaviour
         canMove = false;
         rb.velocity = new Vector2(rb.velocity.x, 0);
         gameEnd = true;
+        for (int i = 1; i <= 3; i++)
+        {
+            sound.Stop("Level" + i);
+        }
+        sound.Play("Win");
         x = 1;
         Debug.Log("Attemp Claer CP");
         MasterControl.Instance.checkpointed = false;
         Debug.Log("Claer CP");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         x = 0;
         LevelLoaderObject.LoadNextLevel(nextStage);
     }
@@ -387,9 +413,14 @@ public class PlayerControl : MonoBehaviour
         gotGem = true;
         rb.velocity = new Vector2(rb.velocity.x / 3, rb.velocity.y);
         anim.Stop();
+        for (int i = 1; i <= 3; i++)
+        {
+            sound.Stop("Level" + i);
+        }
         yield return new WaitForSeconds(1.25f);
         Destroy(GemHit);
         anim.SetTrigger("gem");
+        sound.Play("End");
         yield return new WaitForSeconds(3.25f);
         Instantiate(EndCanvas);
     }
