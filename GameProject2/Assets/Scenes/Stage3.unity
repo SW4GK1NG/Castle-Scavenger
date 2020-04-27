@@ -5084,15 +5084,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5722129140118356191, guid: 3ac3133bf11b5d1449834692594b9bc5,
-        type: 3}
-      propertyPath: FireRate
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 5722129140118356184, guid: 3ac3133bf11b5d1449834692594b9bc5,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5722129140118356191, guid: 3ac3133bf11b5d1449834692594b9bc5,
+        type: 3}
+      propertyPath: FireRate
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ac3133bf11b5d1449834692594b9bc5, type: 3}
@@ -5824,15 +5824,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5722129140118356191, guid: 3ac3133bf11b5d1449834692594b9bc5,
-        type: 3}
-      propertyPath: FireRate
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5722129140118356184, guid: 3ac3133bf11b5d1449834692594b9bc5,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5722129140118356191, guid: 3ac3133bf11b5d1449834692594b9bc5,
+        type: 3}
+      propertyPath: FireRate
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1396834751673591411, guid: 3ac3133bf11b5d1449834692594b9bc5,
         type: 3}
@@ -125113,7 +125113,7 @@ PrefabInstance:
     - target: {fileID: 7648907171385469983, guid: aa8cea46b2e66e048bb71edfd8f57594,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7648907171385469980, guid: aa8cea46b2e66e048bb71edfd8f57594,
         type: 3}
