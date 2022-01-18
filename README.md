@@ -1,4 +1,4 @@
-# OriginalGameWithNoNameYet
+Castle-Scavenger
 Repo for my game project for my collage class :)))
 
 Feel free to help me out if you're interest
